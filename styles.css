@@ -13,6 +13,8 @@ header {
     background-color: var(--dark);
     width: 100vw;
     height: 100px;
+    margin-bottom: 50px;
+    box-shadow: 0 0 5px black;
 }
 
 h1 {
@@ -21,4 +23,29 @@ h1 {
     padding-top: 40px;
     padding-left: 20vw;
 
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: 200px;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+div {
+    height: 100%;
+    background-color: var(--dark);
+    display: grid;
+    align-items: center;
+    box-shadow: 0 0 5px black;
+}
+
+p {
+    margin-left: 20px;
+}
+
+.title {
+    font-weight: 700;
 }
