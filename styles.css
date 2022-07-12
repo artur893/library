@@ -1,0 +1,24 @@
+:root {
+    --dark: rgb(34, 40, 49);
+    --lightdark: rgb(57, 62, 70);
+    --light: rgb(255, 211, 105);
+    --white: rgb(238, 238, 238);
+    background-color: var(--lightdark);
+    font-size: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+    color: var(--white);
+}
+
+header {
+    background-color: var(--dark);
+    width: 100vw;
+    height: 100px;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    padding-top: 40px;
+    padding-left: 20vw;
+
+}
