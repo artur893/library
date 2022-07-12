@@ -23,6 +23,7 @@ addToLibrary("Omerta", "Mario Puzo", 384, false)
 
 
 
+
 console.log(myLibrary)
 
 
@@ -50,4 +51,21 @@ function displayBook() {
 }
 
 displayBook()
-// div.textContent = myLibrary[i].title + myLibrary[i].author + myLibrary[i].pages + myLibrary[i].readed
+
+
+//MODAL//
+
+const closePopup = document.querySelector(".x")
+const openAdd = document.querySelector(".add")
+const popup = document.querySelector(".popup")
+const overlay = document.querySelector("#overlay")
+
+openAdd.addEventListener("click", function(){
+    popup.classList.add("active")
+    overlay.classList.add("active")
+})
+
+closePopup.addEventListener("click", function(){
+    popup.classList.remove("active")
+    overlay.classList.remove("active")
+})

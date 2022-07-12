@@ -9,6 +9,8 @@
     color: var(--white);
 }
 
+/*HEADER*/
+
 header {
     background-color: var(--dark);
     width: 100vw;
@@ -25,10 +27,12 @@ h1 {
 
 }
 
+/*CONTENT*/
+
 main {
     display: grid;
     grid-template-columns: repeat(3, 200px);
-    grid-template-rows: 200px;
+    grid-template-rows: 200px 200px;
     justify-content: center;
     align-items: center;
     gap: 50px;
@@ -40,6 +44,7 @@ div {
     display: grid;
     align-items: center;
     box-shadow: 0 0 5px black;
+    border-radius: 10px;
 }
 
 p {
@@ -48,4 +53,76 @@ p {
 
 .title {
     font-weight: 700;
+}
+
+/*BUTTON*/
+
+.add {
+    grid-column: 1 / 2;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark);
+    display: grid;
+    align-items: center;
+    box-shadow: 0 0 5px black;
+    border: none;
+    color: var(--white);
+    font-size: 4rem;
+    cursor: pointer;
+    transition: 500ms;
+    border-radius: 10px;
+}
+
+.add:hover {
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+}
+
+/*MODAL*/
+
+.popup {
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 300ms;
+    display: flex;
+    justify-content: end;
+    align-items: flex-start;
+    z-index: 10;
+}
+
+.popup.active {
+    transform: translate(-50%, -50%) scale(1);
+
+}
+
+.x {
+    width: 50px;
+    height: 50px;
+    margin: 20px;
+    font-size: 28px;
+    color: var(--white);
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
 }
