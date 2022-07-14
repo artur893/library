@@ -17,7 +17,13 @@ function addToLibrary(title, author, pages, readed) {
 
 //DISPLAY BOOKS FROM CODE
 
-addToLibrary("Hobbit", "Tolkien", 356, true)
+addToLibrary("Hobbit1", "Tolkien", 356, true)
+displayBook()
+addToLibrary("Hobbit2", "Tolkien", 356, false)
+displayBook()
+addToLibrary("Hobbit3", "Tolkien", 356, true)
+displayBook()
+addToLibrary("Hobbit4", "Tolkien", 356, false)
 displayBook()
 
 function displayBook() {
@@ -92,4 +98,15 @@ submit.addEventListener("click", function () {
 
 //REMOVING BOOK FROM LIBRARY
 
-const close = document.querySelectorAll(".close")
+const closeButton = document.getElementsByClassName("close")
+
+function removeFromLibrary(x) {
+    myLibrary.splice(x, 1)
+}
+
+for (i = 0; i < closeButton.length; i++) {
+    closeButton[i].addEventListener("click", function (e) {
+        e.target
+        removeFromLibrary(i)
+    })
+}
