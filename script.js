@@ -7,11 +7,10 @@ function Book(title, author, pages, readed) {
     this.author = author
     this.pages = pages
     this.readed = readed
-    return { title, author, pages, readed }
 }
 
 function addToLibrary(title, author, pages, readed) {
-    const book = Book(title, author, pages, readed)
+    const book = new Book(title, author, pages, readed)
     myLibrary.push(book)
 }
 
@@ -26,11 +25,11 @@ displayBook()
 addToLibrary("Hobbit4", "Tolkien", 356, false)
 displayBook()
 
-function displayBook() {
+function displayBook(item) {
     for (i = myLibrary.length - 1; i < myLibrary.length; i++) {
         const main = document.querySelector("main")
         const div = document.createElement("div")
-        const div2 = document.createElement("div")
+        const closeButton = document.createElement("div")
         const pTitle = document.createElement("div")
         const pAuthor = document.createElement("div")
         const pPages = document.createElement("div")
@@ -39,9 +38,9 @@ function displayBook() {
         pTitle.classList.add("title")
         pTitle.textContent = myLibrary[i].title
         div.appendChild(pTitle)
-        pTitle.appendChild(div2)
-        div2.classList.add("close")
-        div2.textContent = "X"
+        pTitle.appendChild(closeButton)
+        closeButton.classList.add("close")
+        closeButton.textContent = "X"
         pAuthor.textContent = myLibrary[i].author
         div.appendChild(pAuthor)
         pPages.textContent = myLibrary[i].pages + " pages"
@@ -56,6 +55,9 @@ function displayBook() {
         }
         div.classList.add("card")
         div.appendChild(pReaded)
+        closeButton.addEventListener("click", function () {
+            myLibrary.splice(myLibrary.indexOf(item), 1)
+        })
     }
 }
 
@@ -98,15 +100,15 @@ submit.addEventListener("click", function () {
 
 //REMOVING BOOK FROM LIBRARY
 
-const closeButton = document.getElementsByClassName("close")
+// const closeButton = document.getElementsByClassName("close")
 
-function removeFromLibrary(x) {
-    myLibrary.splice(x, 1)
-}
+// function removeFromLibrary(x) {
+//     myLibrary.splice(x, 1)
+// }
 
-for (i = 0; i < closeButton.length; i++) {
-    closeButton[i].addEventListener("click", function (e) {
-        e.target
-        removeFromLibrary(i)
-    })
-}
+// for (i = 0; i < closeButton.length; i++) {
+//     closeButton[i].addEventListener("click", function (e) {
+//         e.target
+//         removeFromLibrary(i)
+//     })
+// }
