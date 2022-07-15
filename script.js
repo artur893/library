@@ -1,6 +1,6 @@
 //CREATING LIBRARY
 
-let myLibrary = []
+let myLibrary = [];
 
 function Book(title, author, pages, readed) {
     this.title = title
@@ -9,6 +9,7 @@ function Book(title, author, pages, readed) {
     this.readed = readed
 }
 
+
 function addToLibrary(title, author, pages, readed) {
     const book = new Book(title, author, pages, readed)
     myLibrary.push(book)
@@ -16,17 +17,11 @@ function addToLibrary(title, author, pages, readed) {
 
 //DISPLAY BOOKS FROM CODE
 
-addToLibrary("Hobbit1", "Tolkien", 356, true)
-displayBook()
+addToLibrary("Hobbit1", "Tolkien", 372, true)
 addToLibrary("Hobbit2", "Tolkien", 356, false)
-displayBook()
-addToLibrary("Hobbit3", "Tolkien", 356, true)
-displayBook()
-addToLibrary("Hobbit4", "Tolkien", 356, false)
-displayBook()
 
-function displayBook(item) {
-    for (i = myLibrary.length - 1; i < myLibrary.length; i++) {
+function displayBooks() {
+    for (i = 0; i < myLibrary.length; i++) {
         const main = document.querySelector("main")
         const div = document.createElement("div")
         const closeButton = document.createElement("div")
@@ -45,21 +40,39 @@ function displayBook(item) {
         div.appendChild(pAuthor)
         pPages.textContent = myLibrary[i].pages + " pages"
         div.appendChild(pPages)
+        closeButton.dataset.index = i
         if (myLibrary[i].readed === true) {
             pReaded.textContent = "Read"
+            pReaded.classList.add("read")
             pReaded.classList.add("readed")
+            pReaded.dataset.index = i
         }
         if (myLibrary[i].readed === false) {
             pReaded.textContent = "Not read"
+            pReaded.classList.add("read")
             pReaded.classList.add("notreaded")
+            pReaded.dataset.index = i
         }
         div.classList.add("card")
         div.appendChild(pReaded)
-        closeButton.addEventListener("click", function () {
-            myLibrary.splice(myLibrary.indexOf(item), 1)
-        })
     }
 }
+displayBooks()
+
+
+const card = document.querySelectorAll(".card")
+const findXButton = function () {
+    const xButton = document.querySelectorAll(".close")
+    xButton.forEach((square) => {
+        square.addEventListener("click", function (e) {
+            const index = e.target.dataset.index
+            console.log(index)
+            removeFromLibrary(index)
+        })
+    })
+}
+findXButton()
+
 
 //POPUP DISPLAY
 
@@ -88,27 +101,62 @@ const submit = document.getElementById("submit")
 
 submit.addEventListener("click", function () {
     addToLibrary(title.value, author.value, pages.value, readed.checked)
-    displayBook()
     popup.classList.remove("active")
     overlay.classList.remove("active")
     title.value = ""
     author.value = ""
     pages.value = "0"
     readed.checked = 0
+    clearDisplay()
+    displayBooks()
+    findXButton()
+    readOrNot()
+
 
 })
 
+
 //REMOVING BOOK FROM LIBRARY
 
-// const closeButton = document.getElementsByClassName("close")
+function clearDisplay() {
+    const main = document.querySelector("main")
+    const divs = document.querySelectorAll(".card")
+    for (i = 0; i < divs.length; i++) {
+        main.removeChild(divs[i])
+    }
+}
 
-// function removeFromLibrary(x) {
-//     myLibrary.splice(x, 1)
-// }
 
-// for (i = 0; i < closeButton.length; i++) {
-//     closeButton[i].addEventListener("click", function (e) {
-//         e.target
-//         removeFromLibrary(i)
-//     })
-// }
+
+function removeFromLibrary(index) {
+    myLibrary.splice(index, 1)
+    clearDisplay()
+    displayBooks()
+    findXButton()
+    readOrNot()
+
+}
+
+const readOrNot = function () {
+    const readBtn = document.querySelectorAll(".read")
+    readBtn.forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+            const index = e.target.dataset.index
+            console.log(index)
+            if (myLibrary[index].readed === false) {
+                myLibrary[index].readed = true
+            }
+            else {
+                myLibrary[index].readed = false
+            }
+            
+            clearDisplay()
+    displayBooks()
+    findXButton()
+    readOrNot()
+        })
+        
+    })
+}
+ readOrNot()
+
