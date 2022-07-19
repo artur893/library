@@ -2,11 +2,13 @@
 
 let myLibrary = [];
 
-function Book(title, author, pages, readed) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.readed = readed
+class Book {
+    constructor(title, author, pages, readed) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.readed = readed
+    }
 }
 
 
@@ -148,14 +150,14 @@ const readOrNot = function () {
             else {
                 myLibrary[index].readed = false
             }
-            
+
             clearDisplay()
-    displayBooks()
-    findXButton()
-    readOrNot()
+            displayBooks()
+            findXButton()
+            readOrNot()
         })
-        
+
     })
 }
- readOrNot()
+readOrNot()
 
