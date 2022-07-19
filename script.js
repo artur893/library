@@ -18,7 +18,6 @@ function addToLibrary(title, author, pages, readed) {
 //DISPLAY BOOKS FROM CODE
 
 addToLibrary("Hobbit1", "Tolkien", 372, true)
-addToLibrary("Hobbit2", "Tolkien", 356, false)
 
 function displayBooks() {
     for (i = 0; i < myLibrary.length; i++) {
